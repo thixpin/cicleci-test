@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build-prod:
     docker:
-      - image: circleci/node:18.04-browsers
+      - image: cimg/node:18.20.0-browsers
     steps:
       - checkout
       - restore_cache:
