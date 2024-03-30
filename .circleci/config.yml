@@ -20,7 +20,9 @@ jobs:
           command: npm run build:prod
       - run:
           name: Run Unit Tests
-          command: npm run test:headless || exit 0
+          command: |
+            CHROME_BIN=/usr/bin/google-chrome npm run test:headless
+            npm run test:headless
       - store_test_results:
           path: test-results
       - persist_to_workspace:
