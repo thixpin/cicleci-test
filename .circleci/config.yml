@@ -17,7 +17,7 @@ jobs:
             - ~/.npm
       - run:
           name: Build Angular App
-          command: npm run build -- --prod
+          command: npm run build:prod
       - run:
           name: Run Unit Tests
           command: npm run test:headless
