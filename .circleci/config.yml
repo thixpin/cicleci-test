@@ -3,8 +3,7 @@ version: 2.1
 jobs:
   build-prod:
     docker:
-      - image: circleci/node:14.17.0-browsers
-    working_directory: ~/app
+      - image: circleci/node:18.04-browsers
     steps:
       - checkout
       - restore_cache:
@@ -22,6 +21,8 @@ jobs:
       - run:
           name: Run Unit Tests
           command: npm run test:headless
+      - store_test_results:
+          path: test-results
       - persist_to_workspace:
           root: ~/app
           paths:
