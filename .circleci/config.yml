@@ -22,7 +22,7 @@ jobs:
           name: Install ChromeHeadless
           command: |
             sudo apt-get update
-            sudo apt-get install -y libappindicator1 fonts-liberation
+            sudo apt-get install -y libappindicator1 fonts-liberation libu2f-udev libvulkan1
             wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
             sudo dpkg -i google-chrome-stable_current_amd64.deb
             sudo apt-get install -f
@@ -30,8 +30,9 @@ jobs:
             echo $(which google-chrome)
       - run:
           name: Run Unit Tests
-          command: |
-            CHROME_BIN=/usr/bin/google-chrome npm run test:headless
+          command: npm run test:headless
+          # |
+          #   CHROME_BIN=/usr/bin/google-chrome 
       - store_test_results:
           path: test-results
       - persist_to_workspace:
