@@ -24,7 +24,7 @@ jobs:
       - store_test_results:
           path: test-results
       - persist_to_workspace:
-          root: ~/app
+          root: ~/project
           paths:
             - dist
             - node_modules
