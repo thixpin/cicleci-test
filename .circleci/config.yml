@@ -19,6 +19,16 @@ jobs:
           name: Build Angular App
           command: npm run build:prod
       - run:
+          name: Install ChromeHeadless
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y libappindicator1 fonts-liberation
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            sudo dpkg -i google-chrome-stable_current_amd64.deb
+            sudo apt-get install -f
+            echo $(google-chrome --version)
+            echo $(which google-chrome)
+      - run:
           name: Run Unit Tests
           command: |
             CHROME_BIN=/usr/bin/google-chrome npm run test:headless
